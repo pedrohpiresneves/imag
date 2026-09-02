@@ -1,0 +1,802 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "SF Pro Display", sans-serif;
+  --font-serif: "Instrument Serif", "Geist", ui-serif, Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* ————— iMAG identity tokens — brand-mãe (light-first) ————— */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-hair: var(--hair);
+  --color-hair-strong: var(--hair-strong);
+  --color-divider: var(--divider);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-tint: var(--blue-tint);
+  --color-champagne: var(--champagne);
+  --color-champagne-soft: var(--champagne-soft);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --font-display: "Geist", ui-sans-serif, system-ui, -apple-system, "SF Pro Display", sans-serif;
+}
+
+/* Single source of truth — light-first, blue accent, champagne micro-detail. */
+:root {
+  /* Neutrals */
+  --ink: #0A0A0A;
+  --ink-soft: #1F2937;
+  --paper: #FBFBFD;
+  --surface: #FFFFFF;
+  --surface-soft: #F6F7F9;
+  --text-primary: #0A0A0A;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+
+  /* Lines */
+  --hair: rgba(15, 23, 42, 0.08);
+  --hair-strong: rgba(15, 23, 42, 0.14);
+  --divider: #EEF0F3;
+
+  /* Accents */
+  --blue: #335CFF;
+  --blue-soft: #335CFF;
+  --blue-tint: rgba(51, 92, 255, 0.06);
+  --blue-card: #EDF1FF;
+  --blue-card-border: #D9E0FA;
+  --blue-ink: #1A2A66;
+  --champagne: #C6A15B;
+  --champagne-soft: #E6D7BB;
+
+  /* State */
+  --success: #0F766E;
+  --error: #B91C1C;
+  --warning: #B45309;
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+
+  /* Elevation */
+  --shadow-hair: 0 1px 0 rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.02), 0 12px 32px -18px rgba(15, 23, 42, 0.10);
+  --shadow-elev: 0 4px 12px rgba(15, 23, 42, 0.04), 0 24px 48px -24px rgba(15, 23, 42, 0.18);
+  --shadow-focus: 0 0 0 2px rgba(51, 92, 255, 0.35);
+  --shadow-premium: var(--shadow-card);
+
+  /* Legacy shadcn-compat aliases (light-first) */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --surface-1: var(--surface);
+  --surface-2: var(--surface-soft);
+  --muted: var(--surface-soft);
+  --muted-foreground: var(--text-secondary);
+  --border: var(--hair);
+  --hairline: var(--hair);
+  --input: var(--hair-strong);
+  --ring: var(--blue);
+  --primary: var(--ink);
+  --primary-foreground: #FFFFFF;
+  --accent: var(--blue);
+  --accent-foreground: #FFFFFF;
+  --accent-soft: var(--blue-tint);
+  --secondary: var(--surface-soft);
+  --secondary-foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --destructive: var(--error);
+  --destructive-foreground: #FFFFFF;
+  --radius-legacy: 0.875rem;
+
+  /* Legacy brand aliases so old refs keep resolving */
+  --gold: var(--champagne);
+  --gold-soft: var(--champagne-soft);
+
+  /* Legacy imag-* aliases */
+  --imag-background: var(--paper);
+  --imag-surface: var(--surface);
+  --imag-surface-soft: var(--surface-soft);
+  --imag-text-primary: var(--ink);
+  --imag-text-secondary: var(--text-secondary);
+  --imag-text-muted: var(--text-muted);
+  --imag-accent: var(--blue);
+  --imag-accent-hover: var(--blue-soft);
+  --imag-accent-active: var(--blue);
+  --imag-accent-soft: var(--blue-tint);
+  --imag-accent-border: var(--hair);
+  --imag-border: var(--hair);
+  --imag-divider: var(--divider);
+  --imag-success: var(--success);
+  --imag-error: var(--error);
+  --imag-warning: var(--warning);
+
+  color-scheme: light;
+}
+
+/* ————— Tema da MAG: claro por padrão, escuro opcional ————— */
+:root,
+[data-mag-theme="light"] {
+  --mag-bg: #FFFFFF;
+  --mag-surface: #F7F8FB;
+  --mag-bubble: #F2F4F9;
+  --mag-border: #E5E8F0;
+  --mag-text: #0E1220;
+  --mag-muted: #6B7280;
+  --mag-accent-soft: rgba(51, 92, 255, 0.08);
+}
+
+[data-mag-theme="dark"] {
+  --mag-bg: #080D1A;
+  --mag-surface: #0E1628;
+  --mag-bubble: #17213A;
+  --mag-border: #263554;
+  --mag-text: #F3F6FF;
+  --mag-muted: #8FA3D0;
+  --mag-accent-soft: rgba(51, 92, 255, 0.18);
+  color-scheme: dark;
+}
+
+/* App shell header: intentionally opaque so page themes cannot bleed through. */
+.app-header {
+  background-color: #335CFF !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  border-bottom-color: #335CFF !important;
+  isolation: isolate;
+}
+
+.app-header-menu {
+  background-color: #335CFF !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+
+.app-header::before,
+.app-header::after,
+.app-header-menu::before,
+.app-header-menu::after {
+  content: none !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Opt-in dark surface for the rare premium screen (MAGCast player, mentor chat,
+   admin drawers). Kept as a scope, no longer the platform default. */
+.surface-dark,
+:root.dark {
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --surface-1: #131313;
+  --surface-2: #1A1A1A;
+  --muted: #131313;
+  --muted-foreground: rgba(255,255,255,0.65);
+  --border: rgba(255,255,255,0.08);
+  --hairline: rgba(255,255,255,0.08);
+  --hair: rgba(255,255,255,0.08);
+  --hair-strong: rgba(255,255,255,0.16);
+  --input: rgba(255,255,255,0.12);
+  --ring: var(--blue-soft);
+  --primary: #FFFFFF;
+  --primary-foreground: #0A0A0A;
+  --accent: var(--blue-soft);
+  --accent-foreground: #FFFFFF;
+  --accent-soft: rgba(59, 91, 219, 0.18);
+  --secondary: #1A1A1A;
+  --secondary-foreground: #FFFFFF;
+  --card: #131313;
+  --card-foreground: #FFFFFF;
+  --popover: #131313;
+  --popover-foreground: #FFFFFF;
+  --paper: #0A0A0A;
+  --surface: #131313;
+  --surface-soft: #1A1A1A;
+  --divider: rgba(255,255,255,0.08);
+  color-scheme: dark;
+}
+
+/* Backwards-compat: pages/components using `.surface-light` still work (it's
+   now the platform default, so the class is a no-op re-declaration). */
+.surface-light {
+  background: var(--paper);
+  color: var(--ink);
+  color-scheme: light;
+}
+
+/* Smooth theme transition */
+html { transition: background-color 0.3s ease, color 0.3s ease; }
+body { transition: background-color 0.3s ease, color 0.3s ease; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-reveal { animation: slideUp 0.7s var(--ease-out-expo) both; }
+
+/* ————— Premium microinteractions ————— */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes progressGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(var(--progress, 1)); }
+}
+@keyframes shine {
+  0%   { transform: translateX(-120%); }
+  60%, 100% { transform: translateX(220%); }
+}
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 40%, transparent); }
+  50%      { box-shadow: 0 0 0 8px color-mix(in oklab, var(--accent) 0%, transparent); }
+}
+
+.animate-fade-up { animation: fadeUp 0.6s var(--ease-out-expo) both; }
+.animate-fade-in { animation: fadeIn 0.5s ease-out both; }
+
+/* Stagger children — apply on parent */
+.stagger > * { animation: fadeUp 0.6s var(--ease-out-expo) both; opacity: 0; }
+.stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger > *:nth-child(4) { animation-delay: 0.22s; }
+.stagger > *:nth-child(5) { animation-delay: 0.28s; }
+.stagger > *:nth-child(6) { animation-delay: 0.34s; }
+.stagger > *:nth-child(7) { animation-delay: 0.40s; }
+.stagger > *:nth-child(8) { animation-delay: 0.46s; }
+
+/* Hover lift for cards */
+.card-lift {
+  transition: transform 0.5s var(--ease-out-expo), border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.5s var(--ease-out-expo);
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px -28px rgba(0,0,0,0.7), 0 0 0 1px color-mix(in oklab, var(--accent) 20%, transparent);
+}
+
+/* Shiny CTA — subtle gold sweep on hover */
+.cta-shine { position: relative; overflow: hidden; isolation: isolate; }
+.cta-shine::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 28%, transparent) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.cta-shine:hover::after { animation: shine 1.1s var(--ease-out-expo); }
+
+/* Elegant linear progress bar */
+.progress-track {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--hairline) 70%, transparent);
+  overflow: hidden;
+}
+.progress-fill {
+  position: absolute; inset: 0;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 60%, var(--accent) 100%);
+  background-size: 200% 100%;
+  animation:
+    progressGrow 1.2s var(--ease-out-expo) both,
+    shimmer 3.5s linear infinite;
+  border-radius: inherit;
+}
+.progress-fill::after {
+  content: "";
+  position: absolute; right: 0; top: 50%;
+  width: 10px; height: 10px; margin-top: -5px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  box-shadow: 0 0 12px 2px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--surface-2) 90%, transparent) 0%,
+    color-mix(in oklab, var(--surface-1) 60%, transparent) 50%,
+    color-mix(in oklab, var(--surface-2) 90%, transparent) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: 6px;
+}
+
+/* Focus ring — sophisticated blue */
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Global smooth transitions on interactive surfaces */
+a, button, [role="button"] {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease-out-expo), opacity 0.3s ease;
+}
+
+/* Underline reveal */
+.link-reveal {
+  position: relative;
+}
+.link-reveal::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.link-reveal:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Podcast player range thumb */
+.podcast-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 9999px;
+  background: var(--accent);
+  border: 2px solid #0f0f10;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 60%, transparent);
+  cursor: pointer;
+}
+.podcast-range::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 9999px;
+  background: var(--accent);
+  border: 2px solid #0f0f10;
+  cursor: pointer;
+}
+.podcast-range::-moz-range-track { background: transparent; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { -webkit-font-smoothing: antialiased; background: var(--color-background); }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss03", "cv11";
+    letter-spacing: -0.014em;
+  }
+  h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.1; }
+  h1 { font-weight: 600; }
+  ::selection { background: var(--color-accent); color: var(--color-accent-foreground); }
+}
+
+/* ————— Page-level light surface (per-route opt-in) ————— */
+.surface-light {
+  --background: #FCFBF8;
+  --foreground: #111111;
+  --surface-1: #FFFFFF;
+  --surface-2: #F7F4EE;
+  --muted: #F7F4EE;
+  --muted-foreground: #6E6E73;
+  --border: #E8E8E8;
+  --hairline: #EEEEEE;
+  --input: #E8E8E8;
+  --ring: #C6A15B;
+  --primary: #C6A15B;
+  --primary-foreground: #FFFFFF;
+  --accent: #C6A15B;
+  --accent-foreground: #FFFFFF;
+  --accent-soft: #F5EFE4;
+  --secondary: #F7F4EE;
+  --secondary-foreground: #111111;
+  --card: #FFFFFF;
+  --card-foreground: #111111;
+  --popover: #FFFFFF;
+  --popover-foreground: #111111;
+  background: var(--background);
+  color: var(--foreground);
+  color-scheme: light;
+}
+
+/* ————— Premium metal button ————— */
+@utility btn-metal {
+  background: linear-gradient(135deg, #EBD199 0%, #C6A15B 55%, #A77D36 100%);
+  color: #0A0A0A;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 0 rgba(0,0,0,0.12),
+    0 10px 30px -12px rgba(198,161,91,0.45);
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo), filter 0.35s ease;
+}
+.btn-metal:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 0 rgba(0,0,0,0.14),
+    0 16px 40px -14px rgba(198,161,91,0.55);
+}
+
+/* ————— Hide scrollbars on horizontal rails ————— */
+.rail-scroll { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
+.rail-scroll::-webkit-scrollbar { display: none; }
+
+/* ————— Fade rise (route-level entrance) ————— */
+@keyframes fadeRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-rise { animation: fadeRise 0.7s var(--ease-out-expo) both; }
+
+/* ————— Magnetic identity halo (subtle brand watermark) ————— */
+.magnetic-halo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.magnetic-halo::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: min(120vmin, 1100px);
+  height: min(120vmin, 1100px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,161,91,0.05) 0%, rgba(198,161,91,0.02) 40%, transparent 70%);
+  filter: blur(40px);
+  opacity: 0.7;
+}
+
+/* ————— Metallic sheen for hero titles (very subtle) ————— */
+.metal-sheen {
+  background: linear-gradient(
+    100deg,
+    #7A7A7A 0%,
+    #A8A8A8 20%,
+    #DDDDDD 38%,
+    #FFFFFF 50%,
+    #DDDDDD 62%,
+    #A8A8A8 80%,
+    #7A7A7A 100%
+  );
+  background-size: 240% 100%;
+  background-position: var(--sheen-x, 0%) 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.06)) drop-shadow(0 14px 48px rgba(255,255,255,0.08));
+  transition: background-position 0.6s var(--ease-out-expo);
+}
+@keyframes metalSheenDrift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.metal-sheen-auto { animation: metalSheenDrift 12s ease-in-out infinite; }
+
+/* ————— Marquee horizontal infinito (profissões) ————— */
+@keyframes professionMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.profession-marquee {
+  animation: professionMarquee 55s linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .profession-marquee { animation: none; }
+}
+
+/* ————— Premium card: occasional gold border sweep ————— */
+@keyframes goldEdgeSweep {
+  0%, 78%, 100% { opacity: 0; background-position: -120% 50%; }
+  86%           { opacity: 0.55; background-position: 120% 50%; }
+  94%           { opacity: 0; background-position: 220% 50%; }
+}
+.gold-edge-sheen { position: relative; }
+.gold-edge-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(115deg,
+    transparent 40%,
+    rgba(216, 184, 122, 0.55) 50%,
+    transparent 60%);
+  background-size: 220% 100%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  animation: goldEdgeSweep var(--sweep-duration, 11s) ease-in-out infinite;
+  animation-delay: var(--sweep-delay, 0s);
+}
+
+/* Dark metal-sheen — for light backgrounds (e.g. /apresentacao) */
+.metal-sheen-dark {
+  background: linear-gradient(
+    100deg,
+    #1a1a1a 0%,
+    #2b2b2b 18%,
+    #0a0a0a 34%,
+    #111111 42%,
+    #C6A15B 50%,
+    #111111 58%,
+    #0a0a0a 66%,
+    #2b2b2b 84%,
+    #1a1a1a 100%
+  );
+  background-size: 250% 100%;
+  background-position: var(--sheen-x, 0%) 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.04)) drop-shadow(0 12px 32px rgba(198,161,91,0.14));
+  transition: background-position 0.6s var(--ease-out-expo);
+}
+
+@theme inline {
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-hairline: var(--hairline);
+  --color-accent-soft: var(--accent-soft);
+}
+
+/* Home refinements — magnetic field breathing, IA input, chips */
+@keyframes lf-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50%      { transform: scale(1.05); opacity: 0.9; }
+}
+
+.mag-input {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  transition:
+    border-color 220ms cubic-bezier(0.22,1,0.36,1),
+    box-shadow 260ms cubic-bezier(0.22,1,0.36,1),
+    background-color 220ms cubic-bezier(0.22,1,0.36,1);
+}
+@media (min-width: 640px) {
+  .mag-input { padding: 1.15rem 1.5rem; }
+}
+.mag-input:hover {
+  border-color: rgba(255,255,255,0.14);
+}
+.mag-input:focus-within {
+  border-color: rgba(198,161,91,0.55);
+  background: rgba(255,255,255,0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 0 0 3px rgba(198,161,91,0.08),
+    0 12px 40px -18px rgba(198,161,91,0.35);
+}
+
+.mag-send:not(:disabled):hover {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 10px 26px -10px rgba(198,161,91,0.6);
+}
+.mag-send:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.mag-chip {
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.mag-chip:hover {
+  border-color: rgba(198,161,91,0.35);
+}
+.mag-chip:active,
+.mag-chip:focus-visible {
+  border-color: rgba(198,161,91,0.7);
+  box-shadow: 0 0 0 3px rgba(198,161,91,0.10);
+  outline: none;
+}
+
+/* ————— Premium CTA (Apple-grade) ————— */
+.premium-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0A0A0A;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F3F1EC 100%);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    inset 0 -1px 0 rgba(0,0,0,0.06),
+    0 10px 30px -12px rgba(198,161,91,0.35),
+    0 2px 8px -2px rgba(0,0,0,0.4);
+  transition:
+    transform 0.45s cubic-bezier(0.19,1,0.22,1),
+    box-shadow 0.45s cubic-bezier(0.19,1,0.22,1),
+    filter 0.35s ease;
+}
+.premium-cta::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.75) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+  z-index: 1;
+}
+.premium-cta > * { position: relative; z-index: 2; }
+.premium-cta:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 -1px 0 rgba(0,0,0,0.06),
+    0 20px 44px -14px rgba(198,161,91,0.55),
+    0 6px 14px -4px rgba(0,0,0,0.5);
+}
+.premium-cta:hover::after { animation: shine 1.1s cubic-bezier(0.19,1,0.22,1); }
+.premium-cta:active { transform: translateY(0); }
+
+/* ————— Hero shine (occasional sweep over the wordmark) ————— */
+@keyframes heroShineSweep {
+  0%, 85%, 100% { transform: translateX(-120%); opacity: 0; }
+  90%           { opacity: 0.9; }
+  100%          { transform: translateX(220%); opacity: 0; }
+}
+.hero-shine { position: relative; }
+.hero-shine::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg,
+    transparent 42%,
+    rgba(255,255,255,0.18) 50%,
+    transparent 58%);
+  transform: translateX(-120%);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  animation: heroShineSweep 9s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+@keyframes mag-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3%); }
+}
+
+/* Flutuação idle do mascote MAG na entrada do chat. */
+.mag-float {
+  animation: mag-float 3.4s ease-in-out infinite;
+}
+
+body.sheet-open [data-app-chrome] { display: none !important; }
+
+@keyframes antenna-pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  40% { transform: translateX(-50%) scale(1.35); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* ————— Página de preferências de notificação —————
+   Força esquema claro e cores explícitas: o app roda com :root.dark por padrão,
+   o que deixava textos sem classe de cor herdando branco sobre fundo branco.
+   Também neutraliza o modo escuro automático do iOS/Safari. */
+.force-light-surface {
+  color-scheme: light !important;
+  background-color: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+.force-light-surface *,
+.force-light-surface *::before,
+.force-light-surface *::after {
+  -webkit-text-fill-color: currentColor !important;
+  opacity: 1;
+}
+
+.force-light-surface h1,
+.force-light-surface h2,
+.force-light-surface p,
+.force-light-surface span,
+.force-light-surface label,
+.force-light-surface button,
+.force-light-surface select,
+.force-light-surface option,
+.force-light-surface input,
+.force-light-surface a {
+  color: #111111;
+}
+
+.force-light-surface select,
+.force-light-surface input {
+  background-color: #FFFFFF !important;
+  color-scheme: light !important;
+}
+
+.force-light-surface .txt-secondary { color: #737373 !important; }
+.force-light-surface .txt-section { color: #A3A3A3 !important; }
+.force-light-surface .txt-accent { color: #335CFF !important; }
+.force-light-surface .txt-danger { color: #C0453B !important; }
+
+@media (prefers-color-scheme: dark) {
+  .force-light-surface,
+  .force-light-surface * {
+    -webkit-text-fill-color: currentColor !important;
+  }
+  .force-light-surface { background-color: #FFFFFF !important; color: #111111 !important; }
+}

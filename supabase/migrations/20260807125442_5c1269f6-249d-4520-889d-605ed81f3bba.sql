@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.push_notification(uuid, text, text, text, text, text) FROM PUBLIC, anon, authenticated;

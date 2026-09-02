@@ -1,0 +1,1 @@
+ALTER TABLE public.plan_reflections ADD COLUMN IF NOT EXISTS activity_text TEXT;

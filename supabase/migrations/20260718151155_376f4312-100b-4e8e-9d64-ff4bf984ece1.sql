@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS circle_visible boolean NOT NULL DEFAULT false;

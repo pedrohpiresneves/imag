@@ -1,0 +1,24 @@
+REVOKE EXECUTE ON FUNCTION public.create_circle(text, text, text, integer, integer) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.join_circle_by_code(text) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.invite_to_circle(uuid, uuid[]) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.respond_circle_invite(uuid, boolean) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.leave_circle(uuid) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.end_circle(uuid) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.update_circle_challenge(uuid, text, text, integer) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.get_my_circles() FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.get_circle_detail(uuid) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.get_active_circle_summary() FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.circle_member_stats(uuid, timestamptz, timestamptz) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.is_circle_member(uuid, uuid) FROM anon, public;
+
+GRANT EXECUTE ON FUNCTION public.create_circle(text, text, text, integer, integer) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.join_circle_by_code(text) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.invite_to_circle(uuid, uuid[]) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.respond_circle_invite(uuid, boolean) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.leave_circle(uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.end_circle(uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.update_circle_challenge(uuid, text, text, integer) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.get_my_circles() TO authenticated;
+GRANT EXECUTE ON FUNCTION public.get_circle_detail(uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.get_active_circle_summary() TO authenticated;
+GRANT EXECUTE ON FUNCTION public.is_circle_member(uuid, uuid) TO authenticated;

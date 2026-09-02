@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /app
+Disallow: /auth
+Disallow: /reset-password
+Disallow: /checkout
+Disallow: /checkout/
+Disallow: /pagamento/
+Disallow: /mentor
+Disallow: /modulo/
+Disallow: /pilares
+Disallow: /pilar/
+Disallow: /preview
+Disallow: /r/
+Disallow: /api/
+
+Sitemap: https://imag.net.br/sitemap.xml
